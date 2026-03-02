@@ -6,4 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-iced = "0.13.1"
+iced = "0.14.0"
+
+[dev-dependencies]
+anyhow = "1"
