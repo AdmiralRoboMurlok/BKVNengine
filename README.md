@@ -1,2 +1,2 @@
 # BKVNengine
-A game engine for visual novels
+<p>BKVNengine is a rust based engine for visual novels made with <a href="https://github.com/iced-rs/iced" target="_self">iced</a> library. It is a school project so please don't expect much <strong>:3</strong></p> 
