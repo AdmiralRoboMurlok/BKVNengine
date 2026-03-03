@@ -1,7 +1,6 @@
-pub mod tests;
-pub mod GUI;
-pub mod serialize;
+mod gui;
 
 fn main() {
     println!("Hello, world!");
+    gui::initialize_gui();
 }
