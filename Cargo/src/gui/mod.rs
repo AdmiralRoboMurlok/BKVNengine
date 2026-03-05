@@ -1,3 +1,5 @@
+mod file_column;
+
 use iced::{widget::text, Element};
 
 #[derive(Default)]
@@ -6,7 +8,7 @@ struct MyState {
 }
 
 #[derive(Debug)]
-enum Messages {
+pub enum Messages {
     Exit,
 }
 
