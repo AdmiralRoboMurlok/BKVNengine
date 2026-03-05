@@ -1,6 +1,6 @@
 mod file_column;
 
-use iced::{widget::text, Element, widget::Row};
+use iced::{widget::text, widget::Column};
 use crate::gui::file_column::file_column;
 
 #[derive(Default)]
@@ -11,11 +11,14 @@ struct MyState {
 #[derive(Debug)]
 pub enum Messages {
     Exit,
+    ImportCharacter,
+    ImportBackground,
+    ImportSound,
 }
 
 fn update(state: &mut MyState, message: Messages) {}
 
-fn view(state: &MyState) -> Row<'_, Messages> {
+fn view(state: &MyState) -> Column<'_, Messages> {
     file_column(state)
 }
 

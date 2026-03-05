@@ -1,5 +1,4 @@
-use iced::widget::{text, row, Row};
-use iced::widget::text::State;
+use iced::widget::{text, row, Row, column, Column};
 use crate::gui::{Messages, MyState};
 
 fn toolbar(state: &MyState) -> Row<'_, Messages> {
@@ -8,6 +7,8 @@ fn toolbar(state: &MyState) -> Row<'_, Messages> {
     ]
 }
 
-pub fn file_column(state: &MyState) -> Row<'_, Messages> {
-    toolbar(state)
+pub fn file_column(state: &MyState) -> Column<'_, Messages> {
+    column![
+        toolbar(&state)
+    ]
 }
