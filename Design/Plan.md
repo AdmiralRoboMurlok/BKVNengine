@@ -1,9 +1,7 @@
 # Project roadmap
 ### First phase of the project
 
-> - Design gui
-> - Write code for the gui
-> - Write the documentation for gui
-> - If possible write tests for gui
-
-### Current status of the first phase: 0/4
+> - Finish the gui design
+> - Complete the left bar of the project, this includes:
+> - - Finishing the scene toolbar
+> - - Make the scene elements view
