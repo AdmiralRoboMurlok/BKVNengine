@@ -3,7 +3,9 @@ pub mod scene_manager;
 pub mod scene_builder;
 
 use iced::{widget::text, widget::Column};
+use iced::widget::{row, Row};
 use crate::gui::file_column::file_column;
+use crate::gui::scene_manager::scene_bar;
 use crate::placeholder;
 
 #[derive(Default)]
@@ -17,6 +19,7 @@ pub enum Messages {
     ImportCharacter,
     ImportBackground,
     ImportSound,
+    placeholder_msg,
 }
 
 fn update(state: &mut MyState, message: Messages) {
@@ -25,11 +28,15 @@ fn update(state: &mut MyState, message: Messages) {
         Messages::ImportCharacter => placeholder(),
         Messages::ImportBackground => placeholder(),
         Messages::ImportSound => placeholder(),
+        Messages::placeholder_msg => placeholder(),
     }
 }
 
-fn view(state: &MyState) -> Column<'_, Messages> {
-    file_column(state)
+fn view(state: &MyState) -> Row<'_, Messages> {
+    row![
+        file_column(state),
+        scene_bar(state),
+    ]
 }
 
 fn new() -> MyState {

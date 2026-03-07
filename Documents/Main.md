@@ -1,2 +1,2 @@
 # Project structure
-I need to write it some day... but not today... back hurt...
+Project is divided into 3 main folders __Cargo__, __Design__ and __Documents__.
