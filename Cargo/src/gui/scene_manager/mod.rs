@@ -3,7 +3,7 @@ use crate::gui::{Messages, MyState};
 
 fn scene_tools(state: &MyState) -> Row<'_, Messages> {
     row![
-        button("Add scene").on_press(Messages::placeholder_msg),
+        button("Add scene").on_press(Messages::PlaceholderMsg),
     ]
 }
 

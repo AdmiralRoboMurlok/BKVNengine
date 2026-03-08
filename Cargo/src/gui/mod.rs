@@ -8,6 +8,7 @@ use iced::widget::{row, Row};
 use crate::gui::file_column::file_column;
 use crate::gui::scene_manager::scene_bar;
 use crate::gui::scene_builder::scene_view;
+use crate::gui::file_column_msg_handler::*;
 use crate::placeholder;
 
 #[derive(Default)]
@@ -21,16 +22,16 @@ pub enum Messages {
     ImportCharacter,
     ImportBackground,
     ImportSound,
-    placeholder_msg,
+    PlaceholderMsg,
 }
 
 fn update(state: &mut MyState, message: Messages) {
     match message {
         Messages::Exit => placeholder(),
-        Messages::ImportCharacter => placeholder(),
-        Messages::ImportBackground => placeholder(),
-        Messages::ImportSound => placeholder(),
-        Messages::placeholder_msg => placeholder(),
+        Messages::ImportCharacter => import_character(),
+        Messages::ImportBackground => import_background(),
+        Messages::ImportSound => import_sound(),
+        Messages::PlaceholderMsg => placeholder(),
     }
 }
 
