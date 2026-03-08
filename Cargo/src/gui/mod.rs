@@ -1,11 +1,13 @@
 mod file_column;
 pub mod scene_manager;
 pub mod scene_builder;
+pub mod file_column_msg_handler;
 
 use iced::{widget::text, widget::Column};
 use iced::widget::{row, Row};
 use crate::gui::file_column::file_column;
 use crate::gui::scene_manager::scene_bar;
+use crate::gui::scene_builder::scene_view;
 use crate::placeholder;
 
 #[derive(Default)]
@@ -35,6 +37,7 @@ fn update(state: &mut MyState, message: Messages) {
 fn view(state: &MyState) -> Row<'_, Messages> {
     row![
         file_column(state),
+        scene_view(state),
         scene_bar(state),
     ]
 }
