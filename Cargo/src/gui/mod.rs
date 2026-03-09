@@ -34,7 +34,7 @@ fn update(state: &mut MyState, message: Messages) {
         Messages::ImportCharacter => import_character(),
         Messages::ImportBackground => import_background(),
         Messages::ImportSound => import_sound(),
-        Messages::FileHandler(option) => placeholder(),
+        Messages::FileHandler(option) => toolbar_file_handler(&option),
         Messages::PlaceholderMsg => placeholder(),
     }
 }
