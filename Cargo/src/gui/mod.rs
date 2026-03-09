@@ -2,33 +2,15 @@ mod file_column;
 pub mod scene_manager;
 pub mod scene_builder;
 pub mod file_column_msg_handler;
+pub mod toolbar_enums;
 
 use iced::widget::{row, Row};
 use crate::gui::file_column::file_column;
 use crate::gui::scene_manager::scene_bar;
 use crate::gui::scene_builder::scene_view;
 use crate::gui::file_column_msg_handler::*;
+use crate::gui::toolbar_enums::*;
 use crate::placeholder;
-use strum::{EnumCount, IntoEnumIterator};
-use strum_macros::{EnumCount as EnumCountMacro, EnumIter};
-
-//Add a file for the enums
-#[derive(Debug, Clone, Copy, PartialEq, Eq, EnumCountMacro, EnumIter)]
-pub enum FilesOptions {
-    NewFile,
-    OpenFile,
-    SaveFile,
-}
-
-impl std::fmt::Display for FilesOptions {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_str(match self {
-            Self::NewFile => "New file",
-            Self::OpenFile => "Open file",
-            Self::SaveFile => "Save file",
-        })
-    }
-}
 
 #[derive(Default)]
 struct MyState {

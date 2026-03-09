@@ -1,6 +1,6 @@
 use iced::widget::{text, row, Row, column, Column, button, pick_list};
 use crate::gui::{Messages, MyState};
-use crate::gui::FilesOptions;
+use crate::gui::toolbar_enums::FilesOptions;
 
 fn toolbar(state: &MyState) -> Row<'_, Messages> {
     let options = [
