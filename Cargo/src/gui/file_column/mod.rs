@@ -1,10 +1,16 @@
 use iced::widget::{text, row, Row, column, Column, button, pick_list};
 use crate::gui::{Messages, MyState};
-
+use crate::gui::FilesOptions;
 
 fn toolbar(state: &MyState) -> Row<'_, Messages> {
+    let options = [
+        FilesOptions::NewFile,
+        FilesOptions::OpenFile,
+        FilesOptions::SaveFile,
+    ];
+
     row![
-        button("Files").on_press(Messages::PlaceholderMsg),
+        pick_list(options, state.file_state, Messages::FileHandler).placeholder("Files"),
         button("Edit").on_press(Messages::PlaceholderMsg),
         button("View").on_press(Messages::PlaceholderMsg),
         button("Navigate").on_press(Messages::PlaceholderMsg),
