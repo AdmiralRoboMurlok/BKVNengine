@@ -1,6 +1,6 @@
 use iced::widget::{text, row, Row, column, Column, button, pick_list};
 use crate::gui::{Messages, MyState};
-use crate::gui::toolbar_enums::{EditOptions, FilesOptions, ViewOptions};
+use crate::gui::toolbar_enums::{EditOptions, FilesOptions, ViewOptions, HelpOptions};
 
 fn toolbar(state: &MyState) -> Row<'_, Messages> {
     let file_options = [
@@ -8,22 +8,26 @@ fn toolbar(state: &MyState) -> Row<'_, Messages> {
         FilesOptions::OpenFile,
         FilesOptions::SaveFile,
     ];
-    
+
     let edit_options = [
         EditOptions::Copy,
         EditOptions::Paste,
         EditOptions::Delete,
     ];
-    
+
     let view_options = [
-        ViewOptions::NotKnownYet,  
+        ViewOptions::NotKnownYet,
+    ];
+
+    let help_options = [
+        HelpOptions::Help,
     ];
 
     row![
         pick_list(file_options, state.file_state, Messages::FileHandler).placeholder("Files"),
         pick_list(edit_options, state.edit_state, Messages::EditHandler).placeholder("Edit"),
         pick_list(view_options, state.view_state, Messages::ViewHandler).placeholder("View"),
-        pick_list(view_options, state.view_state, Messages::ViewHandler).placeholder("Help"),
+        pick_list(help_options, state.help_state, Messages::HelpHandler).placeholder("Help"),
     ]
 }
 
@@ -38,7 +42,7 @@ fn scene_toolbar(state: &MyState) -> Row<'_, Messages> {
 
 fn filter_buttons(state: &MyState) -> Row<'_, Messages> {
     row![
-        
+
     ]
 }
 

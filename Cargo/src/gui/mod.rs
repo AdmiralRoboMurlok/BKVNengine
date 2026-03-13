@@ -50,15 +50,15 @@ fn update(state: &mut MyState, message: Messages) {
 
 fn scene(state: &MyState) -> Column<'_, Messages> {
     column![
-        
+        scene_view(state),
+        scene_bar(state),
     ]
 }
 
 fn view(state: &MyState) -> Row<'_, Messages> {
     row![
         file_column(state),
-        scene_view(state),
-        scene_bar(state),
+        scene(state)
     ]
 }
 
