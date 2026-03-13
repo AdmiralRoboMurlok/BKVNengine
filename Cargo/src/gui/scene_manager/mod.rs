@@ -4,6 +4,8 @@ use crate::gui::{Messages, MyState};
 fn scene_tools(state: &MyState) -> Row<'_, Messages> {
     row![
         button("Add scene").on_press(Messages::PlaceholderMsg),
+        button("Edit scene").on_press(Messages::PlaceholderMsg),
+        button("Delete scene").on_press(Messages::PlaceholderMsg),
     ]
 }
 
