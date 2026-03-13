@@ -47,3 +47,16 @@ impl std::fmt::Display for ViewOptions {
         })
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, EnumCountMacro, EnumIter)]
+pub enum HelpOptions {
+    Help
+}
+
+impl std::fmt::Display for HelpOptions {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(match self {
+            Self::Help => "Help",
+        })
+    }
+}

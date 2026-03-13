@@ -23,8 +23,7 @@ fn toolbar(state: &MyState) -> Row<'_, Messages> {
         pick_list(file_options, state.file_state, Messages::FileHandler).placeholder("Files"),
         pick_list(edit_options, state.edit_state, Messages::EditHandler).placeholder("Edit"),
         pick_list(view_options, state.view_state, Messages::ViewHandler).placeholder("View"),
-        button("Navigate").on_press(Messages::PlaceholderMsg),
-        button("Help").on_press(Messages::PlaceholderMsg),
+        pick_list(view_options, state.view_state, Messages::ViewHandler).placeholder("Help"),
     ]
 }
 

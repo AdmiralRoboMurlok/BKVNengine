@@ -18,6 +18,7 @@ struct MyState {
     file_state: Option<FilesOptions>,
     edit_state: Option<EditOptions>,
     view_state: Option<ViewOptions>,
+    help_state: Option<HelpOptions>,
 }
 
 #[derive(Debug, Clone)]
@@ -29,6 +30,7 @@ pub enum Messages {
     FileHandler(FilesOptions),
     EditHandler(EditOptions),
     ViewHandler(ViewOptions),
+    HelpHandler(HelpOptions),
     PlaceholderMsg,
 }
 
@@ -41,6 +43,7 @@ fn update(state: &mut MyState, message: Messages) {
         Messages::FileHandler(option) => toolbar_file_handler(&option),
         Messages::EditHandler(option) => toolbar_edit_handler(&option),
         Messages::ViewHandler(option) => toolbar_view_handler(&option),
+        Messages::HelpHandler(option) => toolbar_help_handler(&option),
         Messages::PlaceholderMsg => placeholder()
     }
 }
@@ -65,6 +68,7 @@ fn new() -> MyState {
         file_state: None,
         edit_state: None,
         view_state: None,
+        help_state: None,
     };
     states
 }
