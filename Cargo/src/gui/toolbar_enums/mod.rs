@@ -17,3 +17,33 @@ impl std::fmt::Display for FilesOptions {
         })
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, EnumCountMacro, EnumIter)]
+pub enum EditOptions {
+    Copy,
+    Paste,
+    Delete,
+}
+
+impl std::fmt::Display for EditOptions {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(match self {
+            Self::Copy => "Copy",
+            Self::Paste => "Paste",
+            Self::Delete => "Delete",
+        })
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, EnumCountMacro, EnumIter)]
+pub enum ViewOptions {
+    NotKnownYet
+}
+
+impl std::fmt::Display for ViewOptions {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str(match self {
+            Self::NotKnownYet => "NotKnownYet",
+        })
+    }
+}
