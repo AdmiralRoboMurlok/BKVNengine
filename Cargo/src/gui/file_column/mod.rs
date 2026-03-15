@@ -1,6 +1,6 @@
-use iced::widget::{text, row, Row, column, Column, button, pick_list};
+use iced::widget::{text, row, Row, column, Column, button, pick_list, radio};
 use crate::gui::{Messages, MyState};
-use crate::gui::toolbar_enums::{EditOptions, FilesOptions, ViewOptions, HelpOptions};
+use crate::gui::toolbar_enums::{EditOptions, FilesOptions, ViewOptions, HelpOptions, FilterOptions};
 
 fn toolbar(state: &MyState) -> Row<'_, Messages> {
     let file_options = [
@@ -41,8 +41,39 @@ fn scene_toolbar(state: &MyState) -> Row<'_, Messages> {
 }
 
 fn filter_buttons(state: &MyState) -> Row<'_, Messages> {
-    row![
+    let image = radio(
+        "Images",
+        FilterOptions::Image,
+        state.filter_selection_state,
+        Messages::FilterHandler
+    );
 
+    let background = radio(
+        "Background",
+        FilterOptions::Background,
+        state.filter_selection_state,
+        Messages::FilterHandler
+    );
+
+    let sound = radio(
+        "Background",
+        FilterOptions::Sound,
+        state.filter_selection_state,
+        Messages::FilterHandler
+    );
+
+    let all = radio(
+        "All",
+        FilterOptions::All,
+        state.filter_selection_state,
+        Messages::FilterHandler
+    );
+
+    row![
+        image,
+        background,
+        sound,
+        all
     ]
 }
 

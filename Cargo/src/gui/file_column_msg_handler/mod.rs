@@ -1,7 +1,7 @@
 use rfd::FileDialog;
 use std::fs;
 use std::path::Path;
-use crate::gui::toolbar_enums::{EditOptions, FilesOptions, HelpOptions, ViewOptions};
+use crate::gui::toolbar_enums::{EditOptions, FilesOptions, FilterOptions, HelpOptions, ViewOptions};
 
 pub fn import_character() {
     if let Some(path) = FileDialog::new().add_filter("characters", &["png", "jpg", "jpeg"]).set_directory("/").pick_file() {
@@ -40,6 +40,10 @@ pub fn import_sound() {
 
         fs::copy(&path, &target_path).unwrap();
     }
+}
+
+pub fn filter_apply(option: &FilterOptions) {
+
 }
 
 pub fn toolbar_file_handler(option: &FilesOptions) {

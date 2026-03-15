@@ -60,3 +60,11 @@ impl std::fmt::Display for HelpOptions {
         })
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum FilterOptions {
+    Image,
+    Background,
+    Sound,
+    All
+}
