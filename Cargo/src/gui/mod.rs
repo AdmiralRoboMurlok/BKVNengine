@@ -19,6 +19,7 @@ struct MyState {
     edit_state: Option<EditOptions>,
     view_state: Option<ViewOptions>,
     help_state: Option<HelpOptions>,
+    filter_selection_state: Option<FilterOptions>,
 }
 
 #[derive(Debug, Clone)]
@@ -31,6 +32,7 @@ pub enum Messages {
     EditHandler(EditOptions),
     ViewHandler(ViewOptions),
     HelpHandler(HelpOptions),
+    FilterHandler(FilterOptions),
     PlaceholderMsg,
 }
 
@@ -44,6 +46,7 @@ fn update(state: &mut MyState, message: Messages) {
         Messages::EditHandler(option) => toolbar_edit_handler(&option),
         Messages::ViewHandler(option) => toolbar_view_handler(&option),
         Messages::HelpHandler(option) => toolbar_help_handler(&option),
+        Messages::FilterHandler(option) => filter_apply(&option),
         Messages::PlaceholderMsg => placeholder()
     }
 }
@@ -69,6 +72,7 @@ fn new() -> MyState {
         edit_state: None,
         view_state: None,
         help_state: None,
+        filter_selection_state: None,
     };
     states
 }
