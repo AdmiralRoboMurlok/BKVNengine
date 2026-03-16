@@ -4,6 +4,7 @@ pub mod scene_builder;
 pub mod file_column_msg_handler;
 pub mod toolbar_enums;
 
+use std::path::PathBuf;
 use iced::widget::{row, Column, Row, column};
 use crate::gui::file_column::file_column;
 use crate::gui::scene_manager::scene_bar;
@@ -15,6 +16,8 @@ use crate::placeholder;
 #[derive(Default)]
 struct MyState {
     current_state: u64,
+    files: Vec<String>,
+    files_context_menu: Option<usize>,
     file_state: Option<FilesOptions>,
     edit_state: Option<EditOptions>,
     view_state: Option<ViewOptions>,
@@ -34,11 +37,14 @@ pub enum Messages {
     HelpHandler(HelpOptions),
     FilterHandler(FilterOptions),
     PlaceholderMsg,
+    RightClickedFiles(usize),
+    DeleleFiles(usize),
+    CloseMenu,
 }
 
 fn update(state: &mut MyState, message: Messages) {
     match message {
-        Messages::Exit => placeholder(),
+        Messages::Exit => placeholder(&0),
         Messages::ImportCharacter => import_character(),
         Messages::ImportBackground => import_background(),
         Messages::ImportSound => import_sound(),
@@ -47,7 +53,10 @@ fn update(state: &mut MyState, message: Messages) {
         Messages::ViewHandler(option) => toolbar_view_handler(&option),
         Messages::HelpHandler(option) => toolbar_help_handler(&option),
         Messages::FilterHandler(option) => filter_apply(&option),
-        Messages::PlaceholderMsg => placeholder()
+        Messages::PlaceholderMsg => placeholder(&0),
+        Messages::RightClickedFiles(num) => placeholder(&num),
+        Messages::DeleleFiles(num) => placeholder(&num),
+        Messages::CloseMenu => placeholder(&0),
     }
 }
 
@@ -73,6 +82,8 @@ fn new() -> MyState {
         view_state: None,
         help_state: None,
         filter_selection_state: None,
+        files: Vec::new(),
+        files_context_menu: None,
     };
     states
 }

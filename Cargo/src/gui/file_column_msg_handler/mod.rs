@@ -1,3 +1,5 @@
+pub mod file_reader;
+
 use rfd::FileDialog;
 use std::fs;
 use std::path::Path;
@@ -43,7 +45,7 @@ pub fn import_sound() {
 }
 
 pub fn filter_apply(option: &FilterOptions) {
-
+    
 }
 
 pub fn toolbar_file_handler(option: &FilesOptions) {

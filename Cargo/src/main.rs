@@ -9,6 +9,6 @@ fn main() {
     let _ = gui::initialize_gui();
 }
 
-pub fn placeholder(){
-    println!("Hello, from placeholder");
+pub fn placeholder(test: &usize){
+    println!("Hello, from placeholder, {}", test);
 }
