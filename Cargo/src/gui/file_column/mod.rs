@@ -56,7 +56,7 @@ fn filter_buttons(state: &MyState) -> Row<'_, Messages> {
     );
 
     let sound = radio(
-        "Background",
+        "Sound",
         FilterOptions::Sound,
         state.filter_selection_state,
         Messages::FilterHandler

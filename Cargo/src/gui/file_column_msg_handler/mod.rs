@@ -45,7 +45,13 @@ pub fn import_sound() {
 }
 
 pub fn filter_apply(option: &FilterOptions) {
-    
+    match option {
+        FilterOptions::Image => {}
+        FilterOptions::Background => {}
+        FilterOptions::Sound => {}
+        FilterOptions::All => {}
+        _ => {}
+    }
 }
 
 pub fn toolbar_file_handler(option: &FilesOptions) {
