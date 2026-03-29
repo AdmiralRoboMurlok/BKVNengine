@@ -9,6 +9,7 @@ dependencies = [
  "anyhow",
  "iced",
  "rfd",
+ "serde_json",
  "strum",
  "strum_macros",
 ]

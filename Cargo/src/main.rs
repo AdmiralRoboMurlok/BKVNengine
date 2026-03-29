@@ -3,6 +3,7 @@ use std::path::Path;
 
 mod gui;
 mod json_handler;
+mod tests;
 
 fn main() {
     let exe_path = std::env::current_exe().unwrap();
