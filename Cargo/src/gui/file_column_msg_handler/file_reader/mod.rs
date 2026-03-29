@@ -4,7 +4,7 @@ use std::fs;
 
 //}
 
-fn load_all_choice(path: String) -> Vec<String> {
+pub fn load_all_choice(path: &str) -> Vec<String> {
     fs::read_dir(path)
         .unwrap()
         .filter_map(|entry| {

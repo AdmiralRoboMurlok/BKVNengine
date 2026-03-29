@@ -3,6 +3,7 @@ pub mod file_reader;
 use rfd::FileDialog;
 use std::fs;
 use std::path::Path;
+use crate::gui::file_column_msg_handler::file_reader::load_all_choice;
 use crate::gui::toolbar_enums::{EditOptions, FilesOptions, FilterOptions, HelpOptions, ViewOptions};
 
 pub fn import_character() {
@@ -41,16 +42,6 @@ pub fn import_sound() {
         let target_path = target_dir.join(file_name);
 
         fs::copy(&path, &target_path).unwrap();
-    }
-}
-
-pub fn filter_apply(option: &FilterOptions) {
-    match option {
-        FilterOptions::Image => {}
-        FilterOptions::Background => {}
-        FilterOptions::Sound => {}
-        FilterOptions::All => {}
-        _ => {}
     }
 }
 

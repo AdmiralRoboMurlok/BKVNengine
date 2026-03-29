@@ -1,5 +1,6 @@
 use iced::widget::{text, row, Row, column, Column, button, pick_list, radio};
 use crate::gui::{Messages, MyState};
+use crate::gui::file_column_msg_handler::file_reader::load_all_choice;
 use crate::gui::toolbar_enums::{EditOptions, FilesOptions, ViewOptions, HelpOptions, FilterOptions};
 
 fn toolbar(state: &MyState) -> Row<'_, Messages> {
@@ -80,6 +81,34 @@ fn filter_buttons(state: &MyState) -> Row<'_, Messages> {
 fn scene_actors_list(state: &MyState) -> Column<'_, Messages> {
     column![
         filter_buttons(state),
+    ]
+}
+
+pub fn filter_apply(option: &FilterOptions) {
+    match option {
+        FilterOptions::Image => {
+            load_all_choice("./data/characters");
+        }
+        FilterOptions::Background => {
+            load_all_choice("./data/background");
+        }
+        FilterOptions::Sound => {
+            load_all_choice("./data/sound");
+        }
+        FilterOptions::All => {
+            load_all_choice("./data/characters");
+            load_all_choice("./data/background");
+            load_all_choice("./data/sound");
+        }
+        _ => {
+            load_all_choice("./data/");
+        }
+    }
+}
+
+fn files_list(state: &MyState) -> Column<'_, Messages> {
+    column![
+
     ]
 }
 

@@ -2,7 +2,7 @@
 ### Fifth phase of the project
 
 Add radiobuttons to filter and show files from the data \
-Make the edit scene button open a new window with the text, character name, and position
+Make the edit scene button open a new window with the text, character name, and position, albo dać pod przyciskami sceny
 
 ### Sixth phase of the project
 

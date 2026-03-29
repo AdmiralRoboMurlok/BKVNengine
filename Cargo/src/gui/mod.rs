@@ -11,18 +11,19 @@ use crate::gui::scene_manager::scene_bar;
 use crate::gui::scene_builder::scene_view;
 use crate::gui::file_column_msg_handler::*;
 use crate::gui::toolbar_enums::*;
+use crate::gui::file_column::filter_apply;
 use crate::placeholder;
 
 #[derive(Default)]
 struct MyState {
     current_state: u64,
-    files: Vec<String>,
     files_context_menu: Option<usize>,
     file_state: Option<FilesOptions>,
     edit_state: Option<EditOptions>,
     view_state: Option<ViewOptions>,
     help_state: Option<HelpOptions>,
     filter_selection_state: Option<FilterOptions>,
+    files_folder: Vec<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -82,8 +83,8 @@ fn new() -> MyState {
         view_state: None,
         help_state: None,
         filter_selection_state: None,
-        files: Vec::new(),
         files_context_menu: None,
+        files_folder: Vec::new(),
     };
     states
 }
