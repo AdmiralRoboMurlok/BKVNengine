@@ -53,7 +53,10 @@ fn update(state: &mut MyState, message: Messages) {
         Messages::EditHandler(option) => toolbar_edit_handler(&option),
         Messages::ViewHandler(option) => toolbar_view_handler(&option),
         Messages::HelpHandler(option) => toolbar_help_handler(&option),
-        Messages::FilterHandler(option) => filter_apply(&option),
+        Messages::FilterHandler(option) =>  {
+            state.filter_selection_state = Some(option.clone());
+            state.files_folder = filter_apply(&option);
+        },
         Messages::PlaceholderMsg => placeholder(&0),
         Messages::RightClickedFiles(num) => placeholder(&num),
         Messages::DeleleFiles(num) => placeholder(&num),

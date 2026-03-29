@@ -43,7 +43,7 @@ fn scene_toolbar(state: &MyState) -> Row<'_, Messages> {
 
 fn filter_buttons(state: &MyState) -> Row<'_, Messages> {
     let image = radio(
-        "Images",
+        "Characters",
         FilterOptions::Image,
         state.filter_selection_state,
         Messages::FilterHandler
@@ -84,32 +84,35 @@ fn scene_actors_list(state: &MyState) -> Column<'_, Messages> {
     ]
 }
 
-pub fn filter_apply(option: &FilterOptions) {
+pub fn filter_apply(option: &FilterOptions) -> Vec<String> {
     match option {
         FilterOptions::Image => {
-            load_all_choice("./data/characters");
+            load_all_choice("./data/characters")
         }
         FilterOptions::Background => {
-            load_all_choice("./data/background");
+            load_all_choice("./data/background")
         }
         FilterOptions::Sound => {
-            load_all_choice("./data/sound");
+            load_all_choice("./data/sound")
         }
         FilterOptions::All => {
-            load_all_choice("./data/characters");
-            load_all_choice("./data/background");
-            load_all_choice("./data/sound");
+            let mut all = Vec::new();
+            all.extend(load_all_choice("./data/characters"));
+            all.extend(load_all_choice("./data/background"));
+            all.extend(load_all_choice("./data/sound"));
+            all
         }
         _ => {
-            load_all_choice("./data/");
+            load_all_choice("./data/")
         }
     }
 }
 
 fn files_list(state: &MyState) -> Column<'_, Messages> {
-    column![
-
-    ]
+    state.files_folder.iter().fold(
+        column![],
+        |col, file| col.push(text(file))
+    )
 }
 
 pub fn file_column(state: &MyState) -> Column<'_, Messages> {
@@ -117,5 +120,6 @@ pub fn file_column(state: &MyState) -> Column<'_, Messages> {
         toolbar(&state),
         scene_toolbar(&state),
         scene_actors_list(&state),
+        files_list(&state),
     ]
 }
