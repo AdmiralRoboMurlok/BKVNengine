@@ -1,7 +1,4 @@
-project system JSON
-
-
-project JSON
+/*
 {
     "project": [
         name: project_name,
@@ -11,7 +8,6 @@ project JSON
         sounds: [paths to sounds],
         scenes: [ // scene object
             {
-            id: num,
             number_of_characters: defines their position later on,
             characters_present: [paths to characters],
             background: [path to background],
@@ -21,4 +17,25 @@ project JSON
         ]
         }
     ]
+}
+ */
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Scene {
+    id: u32,
+    number_of_characters: u8,
+    characters_present: Vec<String>,
+    background: Vec<String>,
+    sound: Vec<String>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct ProjectJSON {
+    name: String,
+    last_change: String,
+    characters: Vec<String>,
+    backgrounds: Vec<String>,
+    sounds: Vec<String>,
+    scenes: Vec<Scene>,
 }
