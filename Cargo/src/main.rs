@@ -16,7 +16,7 @@ fn main() {
     fs::create_dir_all(target_dir).unwrap();
     let target_dir = Path::new("./data/sound");
     fs::create_dir_all(target_dir).unwrap();
-    let target_dir = Path::new("./data/project");
+    let target_dir = Path::new("./project");
     fs::create_dir_all(target_dir).unwrap();
 
     let _ = gui::initialize_gui();
