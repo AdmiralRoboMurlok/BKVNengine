@@ -4,7 +4,7 @@ use crate::json_handler::json_struct::{ProjectJSON, Scene};
 
 pub fn create_scene(scene_id: u32, number_of_characters_in_scene: u8,
                     characters: Vec<String>, background: Vec<String>,
-                    sound: Vec<String>) -> serde_json::Result<Scene> {
+                    sound: Vec<String>) -> serde_json::error::Result<String> {
     let scene: &str = &format!(r#"
     {{
         id: {:?},
@@ -16,13 +16,13 @@ pub fn create_scene(scene_id: u32, number_of_characters_in_scene: u8,
     "#,
     scene_id, number_of_characters_in_scene, characters, background, sound);
 
-    let scene_json: serde_json::Result<Scene> = from_str::<Scene>(scene);
+    let scene_json = serde_json::to_string_pretty(scene);
     scene_json
 }
 
 pub fn create_project(name: &str, last_change: SystemTime, characters: Vec<String>,
                   backgrounds: Vec<String>, sounds: Vec<String>,
-                  scene: serde_json::error::Result<Scene>) -> serde_json::Result<ProjectJSON> {
+                  scene: serde_json::error::Result<String>) -> serde_json::error::Result<String> {
     let project: &str = &format!(r#"
     {{
         name: {:?},
@@ -35,6 +35,6 @@ pub fn create_project(name: &str, last_change: SystemTime, characters: Vec<Strin
     "#,
     name, last_change, characters, backgrounds, sounds, scene);
 
-    let project_json = from_str::<ProjectJSON>(project);
+    let project_json =  serde_json::to_string_pretty(project);
     project_json
 }
