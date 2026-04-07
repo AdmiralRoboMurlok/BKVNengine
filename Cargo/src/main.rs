@@ -1,5 +1,7 @@
 use std::fs;
+use std::fs::File;
 use std::path::Path;
+use crate::json_handler::create_config_file;
 
 mod gui;
 mod json_handler;
@@ -9,6 +11,8 @@ fn main() {
     let exe_path = std::env::current_exe().unwrap();
     let exe_dir = exe_path.parent().unwrap();
     let _data_folder = exe_dir.join("data");
+
+    create_config_file();
 
     let target_dir = Path::new("./data/characters");
     fs::create_dir_all(target_dir).unwrap();

@@ -39,3 +39,8 @@ pub struct ProjectJSON {
     sounds: Vec<String>,
     scenes: Vec<Scene>,
 }
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Config {
+    first_launch: bool,
+}
