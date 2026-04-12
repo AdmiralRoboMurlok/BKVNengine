@@ -1,7 +1,9 @@
 use std::fs;
 use std::fs::File;
 use std::path::Path;
+use serde_json::json;
 use crate::json_handler::create_config_file;
+use crate::json_handler::json_reader::read_config;
 
 mod gui;
 mod json_handler;
@@ -12,7 +14,14 @@ fn main() {
     let exe_dir = exe_path.parent().unwrap();
     let _data_folder = exe_dir.join("data");
 
-    create_config_file();
+    if (Path::new("./config.json").exists() == true) {
+        let config_data = read_config();
+        // Fix this
+        println!("{:#?}", config_data);
+    }
+    else {
+        create_config_file();
+    }
 
     let target_dir = Path::new("./data/characters");
     fs::create_dir_all(target_dir).unwrap();
