@@ -39,13 +39,3 @@ pub fn create_project(name: &str, last_change: SystemTime, characters: Vec<Strin
     let project_json =  serde_json::to_string_pretty(project);
     project_json
 }
-
-pub fn create_config() -> serde_json::error::Result<String> {
-    let config: &str = &format!(r#"
-    {{
-        first_launch: true
-    }}"#);
-
-    let config_file = serde_json::to_string_pretty(config);
-    config_file
-}

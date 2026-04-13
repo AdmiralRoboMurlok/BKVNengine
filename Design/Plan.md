@@ -14,4 +14,6 @@
 1. Add multiple projects functionality
 2. Make the edit scene button open a new window with the text, character name, and position
 
+Dodać specyfikacje, testy i dokumentacje chyba
+
 https://discourse.iced.rs/t/creating-an-application-with-multiple-windows/1184

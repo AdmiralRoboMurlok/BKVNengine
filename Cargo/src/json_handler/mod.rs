@@ -1,8 +1,9 @@
+use std::error::Error;
 use std::fs::File;
 use std::io::Write;
 use std::path::Path;
-use crate::json_handler::json_parser::{create_scene, create_project, create_config};
-use crate::json_handler::json_struct::{ProjectJSON, Scene};
+use crate::json_handler::json_parser::{create_scene, create_project};
+use crate::json_handler::json_struct::{Config, ProjectJSON, Scene};
 use std::time::SystemTime;
 
 pub mod json_reader;
@@ -31,10 +32,13 @@ pub fn create_project_json(project_name: &str) {
     json_file.unwrap().write_all(project_data.unwrap().as_bytes());
 }
 
-pub fn create_config_file() {
-    let mut config = File::create("./config.json");
+pub fn create_config_file() -> Result<(), Box<dyn std::error::Error>> {
+    let mut config_file = File::create("./config.json")?;
 
-    let config_data = create_config();
+    let config = Config {
+        first_launch: true,
+    };
 
-    config.unwrap().write_all(config_data.unwrap().as_bytes());
+    serde_json::to_writer_pretty(&mut config_file, &config)?;
+    Ok(())
 }
