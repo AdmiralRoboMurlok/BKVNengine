@@ -3,16 +3,13 @@
 ### Sixth phase of the project
 
 1. Make parser generate JSON for the data folder \
-2. Change the structure of the app folder new structure 
-> projects
-> > [project name] / FirstProject
-> > > data <br>
-> > > project
 
 ### Seventh phase of project
 
 1. Add multiple projects functionality
 2. Make the edit scene button open a new window with the text, character name, and position
+3. Add last_project to the config file and, possibly a current_project variable 
+4. Fix json formating in Projcets/FirstProject/project/ProjectData.json
 
 Dodać specyfikacje, testy i dokumentacje chyba
 

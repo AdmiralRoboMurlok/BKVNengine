@@ -1,4 +1,5 @@
 use std::error::Error;
+use std::fs;
 use std::fs::File;
 use std::io::Write;
 use std::path::Path;
@@ -17,8 +18,18 @@ pub fn create_first_project_json() {
 
     let project_data = create_project("FirstProject", date_now, Vec::new(), Vec::new(), Vec::new(), scene);
 
-    let mut json_file = File::create("./project/ProjectData.json");
-    json_file.unwrap().write_all(project_data.unwrap().as_bytes());
+    let target_dir = Path::new("./Projects/FirstProject/project");
+    fs::create_dir_all(target_dir).unwrap();
+
+    let mut json_file = File::create("./Projects/FirstProject/project/ProjectData.json");
+    let _ = json_file.unwrap().write_all(project_data.unwrap().as_bytes());
+
+    let target_dir = Path::new("./Projects/FirstProject/data/characters");
+    fs::create_dir_all(target_dir).unwrap();
+    let target_dir = Path::new("./Projects/FirstProject/data/background");
+    fs::create_dir_all(target_dir).unwrap();
+    let target_dir = Path::new("./Projects/FirstProject/data/sound");
+    fs::create_dir_all(target_dir).unwrap();
 }
 
 pub fn create_project_json(project_name: &str) {
