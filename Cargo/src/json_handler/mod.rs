@@ -11,18 +11,16 @@ pub mod json_reader;
 mod json_parser;
 pub mod json_struct;
 
-pub fn create_first_project_json() {
-    let scene: serde_json::error::Result<String> = create_scene(0, 1, Vec::new(), Vec::new(), Vec::new());
-
+pub fn create_first_project_json() -> Result<(), Box<dyn std::error::Error>> {
     let date_now = SystemTime::now();
 
-    let project_data = create_project("FirstProject", date_now, Vec::new(), Vec::new(), Vec::new(), scene);
+    let project_data = create_project("FirstProject", date_now, Vec::new(), Vec::new(), Vec::new(), Vec::new());
 
     let target_dir = Path::new("./Projects/FirstProject/project");
     fs::create_dir_all(target_dir).unwrap();
 
-    let mut json_file = File::create("./Projects/FirstProject/project/ProjectData.json");
-    let _ = json_file.unwrap().write_all(project_data.unwrap().as_bytes());
+    let mut json_file = File::create("./Projects/FirstProject/project/ProjectData.json")?;
+    serde_json::to_writer_pretty(&mut json_file, &project_data).unwrap();
 
     let target_dir = Path::new("./Projects/FirstProject/data/characters");
     fs::create_dir_all(target_dir).unwrap();
@@ -30,17 +28,17 @@ pub fn create_first_project_json() {
     fs::create_dir_all(target_dir).unwrap();
     let target_dir = Path::new("./Projects/FirstProject/data/sound");
     fs::create_dir_all(target_dir).unwrap();
+    
+    Ok(())
 }
 
 pub fn create_project_json(project_name: &str) {
-    let scene: serde_json::error::Result<String> = create_scene(0, 1, Vec::new(), Vec::new(), Vec::new());
-
     let date_now = SystemTime::now();
 
-    let project_data = create_project(project_name, date_now, Vec::new(), Vec::new(), Vec::new(), scene);
+    let project_data = create_project(project_name, date_now, Vec::new(), Vec::new(), Vec::new(), Vec::new());
 
     let mut json_file = File::create("./project/ProjectData.json");
-    json_file.unwrap().write_all(project_data.unwrap().as_bytes());
+    // json_file.unwrap().write_all(project_data.unwrap().as_bytes());
 }
 
 pub fn create_config_file() -> Result<(), Box<dyn std::error::Error>> {

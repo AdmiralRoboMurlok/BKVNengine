@@ -19,6 +19,7 @@
     ]
 }
  */
+use std::time::SystemTime;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -32,12 +33,12 @@ pub struct Scene {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ProjectJSON {
-    name: String,
-    last_change: String,
-    characters: Vec<String>,
-    backgrounds: Vec<String>,
-    sounds: Vec<String>,
-    scenes: Vec<Scene>,
+    pub name: String,
+    pub last_change: SystemTime,
+    pub characters: Vec<String>,
+    pub backgrounds: Vec<String>,
+    pub sounds: Vec<String>,
+    pub scenes: Vec<Scene>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]

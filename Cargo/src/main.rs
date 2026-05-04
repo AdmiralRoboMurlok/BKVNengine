@@ -1,7 +1,4 @@
-use std::fs;
-use std::fs::File;
 use std::path::Path;
-use serde_json::json;
 use crate::json_handler::{create_config_file, create_first_project_json};
 use crate::json_handler::json_reader::read_config;
 
@@ -16,13 +13,13 @@ fn main() {
 
     if (Path::new("./config.json").exists() == true) {
         let config_data = read_config();
-        println!("{:#?}", config_data);
+        println!("{:#?}", config_data.unwrap());
     }
     else {
-        create_config_file();
+        let _ = create_config_file();
         create_first_project_json();
     }
-    
+
     /*
     let target_dir = Path::new("./data/characters");
     fs::create_dir_all(target_dir).unwrap();
@@ -33,7 +30,7 @@ fn main() {
     let target_dir = Path::new("./project");
     fs::create_dir_all(target_dir).unwrap();
     */
-    
+
     let _ = gui::initialize_gui();
 }
 

@@ -23,19 +23,16 @@ pub fn create_scene(scene_id: u32, number_of_characters_in_scene: u8,
 
 pub fn create_project(name: &str, last_change: SystemTime, characters: Vec<String>,
                   backgrounds: Vec<String>, sounds: Vec<String>,
-                  scene: serde_json::error::Result<String>) -> serde_json::error::Result<String> {
-    let project: &str = &format!(r#"
-    {{
-        name: {:?},
-        last_change: {:?},
-        characters: {:?},
-        backgrounds: {:?},
-        sounds: {:?},
-        scenes: {:?},
-    }}
-    "#,
-    name, last_change, characters, backgrounds, sounds, scene);
+                  scene: Vec<Scene>) -> ProjectJSON {
+    let project = ProjectJSON
+    {
+        name: name.to_string(),
+        last_change: last_change,
+        characters: characters,
+        backgrounds: backgrounds,
+        sounds: sounds,
+        scenes: scene,
+    };
 
-    let project_json =  serde_json::to_string_pretty(project);
-    project_json
+    project
 }
