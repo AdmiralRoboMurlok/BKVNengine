@@ -9,6 +9,8 @@
 
 ### Eight phase of project
 
+
+
 Dodać specyfikacje, testy i dokumentacje chyba
 
 https://discourse.iced.rs/t/creating-an-application-with-multiple-windows/1184

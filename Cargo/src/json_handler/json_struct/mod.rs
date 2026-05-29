@@ -44,4 +44,5 @@ pub struct ProjectJSON {
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Config {
     pub first_launch: bool,
+    pub current_project: String,
 }

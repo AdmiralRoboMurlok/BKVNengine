@@ -16,28 +16,30 @@ pub fn create_first_project_json() -> Result<(), Box<dyn std::error::Error>> {
 
     let project_data = create_project("FirstProject", date_now, Vec::new(), Vec::new(), Vec::new(), Vec::new());
 
-    let target_dir = Path::new("./Projects/FirstProject/project");
-    fs::create_dir_all(target_dir).unwrap();
-
-    let mut json_file = File::create("./Projects/FirstProject/project/ProjectData.json")?;
-    serde_json::to_writer_pretty(&mut json_file, &project_data).unwrap();
-
     let target_dir = Path::new("./Projects/FirstProject/data/characters");
     fs::create_dir_all(target_dir).unwrap();
     let target_dir = Path::new("./Projects/FirstProject/data/background");
     fs::create_dir_all(target_dir).unwrap();
     let target_dir = Path::new("./Projects/FirstProject/data/sound");
     fs::create_dir_all(target_dir).unwrap();
-    
+    let target_dir = Path::new("./Projects/FirstProject/project");
+    fs::create_dir_all(target_dir).unwrap();
+
+    let mut json_file = File::create("./Projects/FirstProject/project/ProjectData.json")?;
+    serde_json::to_writer_pretty(&mut json_file, &project_data).unwrap();
+
     Ok(())
 }
 
+// Update this to fix the JSON reading
 pub fn create_project_json(project_name: &str) {
     let date_now = SystemTime::now();
 
     let project_data = create_project(project_name, date_now, Vec::new(), Vec::new(), Vec::new(), Vec::new());
 
-    let mut json_file = File::create("./project/ProjectData.json");
+    // Fix the path
+    // Add the project name between the //
+    let mut json_file = File::create("./Projects//project/ProjectData.json");
     // json_file.unwrap().write_all(project_data.unwrap().as_bytes());
 }
 
@@ -46,6 +48,7 @@ pub fn create_config_file() -> Result<(), Box<dyn std::error::Error>> {
 
     let config = Config {
         first_launch: true,
+        current_project: "FirstProject".to_string(),
     };
 
     serde_json::to_writer_pretty(&mut config_file, &config)?;
